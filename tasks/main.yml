@@ -1,7 +1,7 @@
 ---
 # Loading OS correct vars
 - name: Loading OS correct vars
-  include_task: load_vars.yml
+  include_tasks: load_vars.yml
   tags:
     - load_vars
     
