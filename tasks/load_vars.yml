@@ -3,41 +3,41 @@
 - name: Include OS Family specific variables.
   include_vars: "{{ ansible_os_family }}.yml"
   tags:
-    - os_family
+    - os_all_family_variables
 
-# Variable OS version specific.
-- name: Include OS-specific variables (Debian).
+# Variable OS distribution version specific.
+- name: Include OS Debian Family distributions version specific Variables.
   include_vars: "{{ ansible_distribution }}-{{ ansible_distribution_version.split('.')[0] }}.yml"
   when: ansible_os_family == 'Debian'
   tags:
-    - os_debian_variables
+    - os_debian_family_variables
 
-- name: Include OS-specific variables (RedHat).
+- name: Include OS RHEL Family distributions version specific Variables.
   include_vars: "{{ ansible_os_family }}-{{ ansible_distribution_version.split('.')[0] }}.yml"
   when:
   - ansible_os_family == 'RedHat'
   - ansible_distribution != 'Fedora'
   - ansible_distribution != 'Amazon'
   tags:
-    - os_rhel_variables
+    - os_rhel_family_variables
 
-- name: Include OS-specific variables (Rocky).
+- name: Include OS Rocky Family distributions version specific Variables.
   include_vars: "{{ ansible_os_family }}-{{ ansible_distribution_version.split('.')[0] }}.yml"
   when:
   - ansible_os_family == 'Rocky'
   - ansible_distribution != 'Fedora'
   - ansible_distribution != 'Amazon'
   tags:
-    -  os_rocky_variables
+    -  os_rocky_family_variables
 
-- name: Include OS-specific variables (Amazon).
+- name: Include OS Amazon Family distributions version specific Variables.
   include_vars: "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
   when: ansible_distribution == 'Amazon'
   tags:
-    -  os_amazon_variables
+    -  os_amazon_family_variables
 
-- name: Include OS-specific variables (Fedora).
+- name: Include OS Fedora Family distributions version specific Variables.
   include_vars: "{{ ansible_distribution }}-{{ ansible_distribution_version.split('.')[0] }}.yml"
   when: ansible_distribution == 'Fedora'
   tags:
-    -  os_fedora_variables
+    -  os_fedora_family_variables
