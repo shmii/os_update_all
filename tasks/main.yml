@@ -4,7 +4,7 @@
   import_tasks: load_vars.yml
   tags:
     - load_vars
-    
+
 # Run tasks.
 - name: Deploy common role on RHEL Familly
   import_tasks: rhel-main.yml
