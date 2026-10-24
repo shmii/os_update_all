@@ -1,8 +1,20 @@
 ---
-- name: "Redhat Familly - Update all packages"
-  yum:
+- name: "Redhat Familly <= 8 - Update all packages"
+  ansible.builtin.dnf:
     name: '*'
     state: latest
+    use_backend: yum
   register: yum_res
   retries: 5
   until: yum_res is success
+  when: ansible_facts['distribution_major_version'] | int <= 8
+
+- name: "Redhat Familly > 8 - Update all packages"
+  ansible.builtin.dnf:
+    name: '*'
+    state: latest
+    use_backend: dnf
+  register: dnf_res
+  retries: 5
+  until: dnf_res is success
+  when: ansible_facts['distribution_major_version'] | int > 8

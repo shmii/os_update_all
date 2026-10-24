@@ -1,6 +1,6 @@
 ---
-- name: Ubuntu - Update all packages
-  apt:
+- name: "Ubuntu - Update all packages"
+  ansible.builtin.apt:
     name: '*'
     state: latest
     update_cache: true
