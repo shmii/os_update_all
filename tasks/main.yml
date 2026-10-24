@@ -8,7 +8,7 @@
 # Run tasks.
 - name: Deploy common role on RHEL Familly
   import_tasks: rhel-main.yml
-  when: ( ansible_os_family == 'RedHat' or ansible_os_family == 'Rocky' )
+  when: ( ansible_facts['os_family'] == 'RedHat' or ansible_facts['os_family'] == 'Rocky' )
   tags:
     - main-rhel
 
